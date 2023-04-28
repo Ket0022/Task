@@ -1,0 +1,59 @@
+setwd("C://Users//kthom//Desktop//Evolution//Task//Task_10")
+x <- rnorm(n - 100, mean - 0, sd -2)
+y - x * 5 + 2 + runif(100, min = 0, max = 0.1)
+model <- lm(y ~ x)
+summary(model)
+#The values shown are the slope x and y intercepts.The slope is used to show relationship and is represented by values. I see two places where there is an interception. The first right before 5 and the second at 2.
+slope <- vector("numeric", 100)
+intercept <- vector("numeric", 100)
+z <- vector("numeric", 100)
+for (i in 1:100){
+  x <- rnorm(n=100, mean = 0, sd =2)
+  z[i]<- runif(1, min =0.5, max =2)
+  y <- x * 5 * z[i] +2 +runif(100, min = 0, max =0.1)
+  model <- lm(y ~x)
+  slope[i] <- coef(model)[2] * z[i]
+  intercept[i] <- coef(model)[1]* z[i] +2
+}
+plot(z, slope, xlab = "z", ylab = "Slope Estimate")
+abline(lm(slope  ~z), col = "red")
+#ExtraCredit1
+n <-1000
+prize <- sample(c("1", "2","3"), size = n, replace =TRUE)
+opened_door <- ifelse(prize == "1", sample(c("2", "3"), size = n, replace =TRUE), ifelse(prize == "2", "3" "2"))
+n <- 10000
+results <- numeric(n)
+game <- function(change) {
+  doors <- c("A", "B", "C")
+  prize_door <- sample(doors, 1)
+  player_choice <- sample(doors, 1)
+  if (change) {
+    new_choice <- setdiff(doors, c(player_choice, open_door))
+    player_choice <- new_choice
+  }
+  win <- player_choice == prize_door
+  return(win)
+}
+for (i in 1:n_sims) {
+  results[i] <- monty_hall(FALSE)
+  win_rate_change <- mean(results)
+  barplot(c(win_rate_stick, win_rate_change), 
+          names.arg = c("Stick with original choice", "Change choice"), 
+          ylab = "Chance to Win", 
+          col = c("Pink", "purple"))
+  closed_door <- ifelse(opened_door == "2", "3", "2")
+  same_door <- sum(prize == "1")/n
+  diff_door <- sum(prize == closed_door)/n
+  win_frequency <- c(same_door, diff_door)
+  barplot(win_frequency, names.arg =c("Same Door", "Different Door"), ylab = "Frequency of Wins in 10,000 Runs", ylim = c(0, 0.8), main = "Chance of Winning Grand Prize", col = "pink")
+  #ExtraCredit2
+  #Meme
+  install.packages("meme")
+  # Load the meme package
+  library(meme)
+  meme(" https://i.kym-cdn.com/entries/icons/original/000/026/489/crying.jpg", 
+       top = "When you can't figure out the r assingment")
+  library(meme)
+  meme("https://i.kym-cdn.com/entries/icons/original/000/026/489/crying.jpg", top = "When you can't figure out the R assignment")
+  
+ 

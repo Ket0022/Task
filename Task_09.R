@@ -1,5 +1,4 @@
 setwd("C://Users//kthom//Desktop//Evolution//Task//Task_09")
-
 library("diversitree")
 library("diversitree")
 transition_0to1 <- 0.1
@@ -79,5 +78,4 @@ simTree <- tree.bisse(Pars, max.taxa = maxN, max.t = maxT)
 str(simTree)
 simTree
 plot(simTree)
-
 #The blue line, tip state 0 when speciation increases for the state of 1 the tip frequency decreases. In evolutionary terms, this may mean the diversification rate is decreasing over time. 
